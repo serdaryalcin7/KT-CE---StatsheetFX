@@ -90,7 +90,7 @@
           <TableColumn fx:id="pts" minWidth="0.0" prefWidth="54.0" text="PTS" />
             <TableColumn fx:id="reb" prefWidth="69.0" text="REB" />
             <TableColumn fx:id="ast" prefWidth="75.0" text="AST" />
-            <TableColumn fx:id="foulsmade" prefWidth="75.0" text="FOULS" />
+            <TableColumn fx:id="foulsCommited" prefWidth="75.0" text="FOULS" />
         </columns>
       </TableView>
       <Button fx:id="twoMade" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#twoMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">

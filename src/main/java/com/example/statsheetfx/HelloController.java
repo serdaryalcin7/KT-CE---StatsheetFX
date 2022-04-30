@@ -11,13 +11,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class HelloController {
+public class HelloController implements Initializable {
+    private Set<StatLine> statLinesSet;
+    private ObservableList<StatLineSummary> statLines = FXCollections.observableArrayList();
 
     @FXML
     Button newGame;
@@ -30,27 +35,66 @@ public class HelloController {
     @FXML
     Label fouls;
     @FXML
-    private TableView<PlayerStats> tableview;
+    private TableView<StatLineSummary> tableview_boxScore;
 
     @FXML
-    private TableColumn<PlayerStats, SimpleStringProperty> name;
+    private TableColumn<StatLineSummary, String> name;
 
     @FXML
-    private TableColumn<PlayerStats, Integer> pts;
+    private TableColumn<StatLineSummary, String> pts;
 
     @FXML
-    private TableColumn<PlayerStats, Integer> reb;
+    private TableColumn<StatLineSummary, String> reb;
 
     @FXML
-    private TableColumn<PlayerStats, Integer> ast;
+    private TableColumn<StatLineSummary, String> ast;
 
     @FXML
-    private TableColumn<PlayerStats, Integer> foulsmade;
+    private TableColumn<StatLineSummary, String> foulsCommited;
 
 
-/*
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        /* Georg (probiert, die Tabelle zu befüllen)
+        statLinesSet = new TreeSet<>();
+        statLines = FXCollections.observableArrayList();
+
+        Player player1 = new Player("Georg", "Rülling", 0);
+        Player player2 = new Player("Magic-Serdar", "Yalcin", 23);
+        Player player3 = new Player("Mamba-Rifat", "Bryant", 0);
+
+        statLinesSet.add(new StatLine(player1));
+        statLinesSet.add(new StatLine(player2));
+        statLinesSet.add(new StatLine(player3));
+
+        StatLineSummary line = new StatLineSummary(new StatLine(player1));
+        statLines.add(line);
+
+
+
+        if(name != null) {
+
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            name.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            pts.setCellValueFactory(new PropertyValueFactory<>("pts"));
+            pts.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            reb.setCellValueFactory(new PropertyValueFactory<>("pts"));
+            reb.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            ast.setCellValueFactory(new PropertyValueFactory<>("pts"));
+            ast.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            tableview_boxScore.setItems(statLines);
+
+
+         */
+        }
+
+        /*
         name.setCellValueFactory(new PropertyValueFactory<PlayerStats, SimpleStringProperty>("name"));
         pts.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("pts"));
         reb.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("reb"));
@@ -58,10 +102,9 @@ public class HelloController {
         foulsmade.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("foulsmade"));
 
         tableview.setItems(getPlayerStats());
+        */
 
-    }
-*/
-  /*  public ObservableList<PlayerStats> getPlayerStats() {
+      public ObservableList<PlayerStats> getPlayerStats() {
 
         ObservableList<PlayerStats> playerStats = FXCollections.observableArrayList();
         playerStats.add(new PlayerStats("Lebron", 12, 12, 12, 12));
@@ -70,7 +113,7 @@ public class HelloController {
 
         return playerStats;
     }
-*/
+
 
 
 
@@ -127,6 +170,5 @@ public class HelloController {
         int num = Integer.parseInt(fouls.getText());
         fouls.setText(Integer.toString(num+1));
     }
-
 
 }

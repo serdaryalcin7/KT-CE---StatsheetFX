@@ -117,7 +117,7 @@
          <font>
             <Font size="13.0" />
          </font></Button>
-      <Button fx:id="foulsCommited_id" layoutX="617.0" layoutY="392.0" mnemonicParsing="false" onAction="#foulsClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Commited" textFill="WHITE">
+      <Button fx:id="foulsCommited_id" layoutX="617.0" layoutY="392.0" mnemonicParsing="false" onAction="#personalFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Commited" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -173,7 +173,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="assist_id" layoutX="319.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Assist" textFill="WHITE">
+      <Button fx:id="assist_id" layoutX="319.0" layoutY="463.0" mnemonicParsing="false" onAction="#assistClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Assist" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -183,72 +183,72 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="defReb_id" layoutX="127.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Def-Reb" textFill="WHITE">
+      <Button fx:id="defReb_id" layoutX="127.0" layoutY="463.0" mnemonicParsing="false" onAction="#defRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Def-Reb" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="offReb_id" layoutX="40.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Off-Reb" textFill="WHITE">
+      <Button fx:id="offReb_id" layoutX="40.0" layoutY="463.0" mnemonicParsing="false" onAction="#offRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Off-Reb" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot1_id" layoutX="40.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot1_id" layoutX="40.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot2_id" layoutX="127.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot2_id" layoutX="127.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot3_id" layoutX="232.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot3_id" layoutX="232.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot4_id" layoutX="319.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot4_id" layoutX="319.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot5_id" layoutX="423.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot5_id" layoutX="423.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot6_id" layoutX="513.0" layoutY="536.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot6_id" layoutX="513.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot7_id" layoutX="40.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot7_id" layoutX="40.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot8_id" layoutX="127.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot8_id" layoutX="127.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot9_id" layoutX="232.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot9_id" layoutX="232.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot10_id" layoutX="319.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot10_id" layoutX="319.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot11_id" layoutX="423.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot11_id" layoutX="423.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot12_id" layoutX="513.0" layoutY="607.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot12_id" layoutX="513.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -24,8 +24,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class HelloController implements Initializable {
-    private Set<StatLine> statLinesSet;
+    private Set<StatLineSummary> statLinesSet;
     private ObservableList<StatLineSummary> statLines = FXCollections.observableArrayList();
+
+    String eventPlayerName;
+    String event;
 
     @FXML
     Button newGame;
@@ -205,8 +208,13 @@ public class HelloController implements Initializable {
     }
 
 
+    public Set<StatLineSummary> getStatLinesSet() {
+        return statLinesSet;
+    }
 
-
+    public void setStatLinesSet(Set<StatLineSummary> statLinesSet) {
+        this.statLinesSet = statLinesSet;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -214,11 +222,13 @@ public class HelloController implements Initializable {
 
         Player player1 = new Player("Lebron", "James", 23);
         Player player2 = new Player("Serdar", "Yalcin", 17);
-        Player player3 = new Player("Donald", "Trump", 6);
+        Player player3 = new Player("Georg", "Rülling", 6);
 
         statlinesSet.add(new StatLineSummary(player1));
         statlinesSet.add(new StatLineSummary(player2));
         statlinesSet.add(new StatLineSummary(player3));
+
+        setStatLinesSet(statlinesSet);
 
         statLines = FXCollections.observableArrayList();
 
@@ -247,30 +257,6 @@ public class HelloController implements Initializable {
     }
 
 
-
-        /*
-        name.setCellValueFactory(new PropertyValueFactory<PlayerStats, SimpleStringProperty>("name"));
-        pts.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("pts"));
-        reb.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("reb"));
-        ast.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("ast"));
-        foulsmade.setCellValueFactory(new PropertyValueFactory<PlayerStats, Integer>("foulsmade"));
-
-        tableview.setItems(getPlayerStats());
-        */
-
-      public ObservableList<PlayerStats> getPlayerStats() {
-
-        ObservableList<PlayerStats> playerStats = FXCollections.observableArrayList();
-        playerStats.add(new PlayerStats("Lebron", 12, 12, 12, 12));
-        playerStats.add(new PlayerStats("Rif", 12, 12, 12, 12));
-        playerStats.add(new PlayerStats("Anan", 12, 12, 12, 12));
-
-        return playerStats;
-    }
-
-
-
-
     //Wechsel zu Screen New Game
     @FXML
     public void newGameClicked() throws Exception {
@@ -292,19 +278,50 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void twoMadeClicked(ActionEvent e) {
+
+        //TODO: counter should be updated after Player and Event is clicked
         int num = Integer.parseInt(counterHome.getText());
         counterHome.setText(Integer.toString(num+2));
+
+        event = "2PT-FG Made";
     }
+
+
     @FXML
     public void threeMadeClicked(ActionEvent e) {
         int num = Integer.parseInt(counterHome.getText());
         counterHome.setText(Integer.toString(num+3));
+        event = "3PT-FG Made";
     }
     @FXML
     public void ftMadeClicked(ActionEvent e) {
         int num = Integer.parseInt(counterHome.getText());
         counterHome.setText(Integer.toString(num+1));
+        event = "FT Made";
+
     }
+
+    @FXML void offRebClicked(ActionEvent e){
+        event = "Offensive Rebound";
+    }
+
+    @FXML void defRebClicked(ActionEvent e){
+        event = "Defensive Rebound";
+    }
+
+    @FXML void assistClicked(ActionEvent e){
+        event = "Assist";
+    }
+
+    @FXML void personalFoulClicked(ActionEvent e){
+        event = "Personal Foul Committed";
+
+        //TODO: Foul-Counter should only be updated after PlayerSlot is clicked!
+        int num = Integer.parseInt(fouls.getText());
+        fouls.setText(Integer.toString(num+1));
+    }
+
+
     @FXML
     public void optwoMadeClicked(ActionEvent e) {
         int num = Integer.parseInt(counterGuest.getText());
@@ -323,9 +340,76 @@ public class HelloController implements Initializable {
 
     @FXML
     public void foulsClicked(ActionEvent e) {
-        int num = Integer.parseInt(fouls.getText());
-        fouls.setText(Integer.toString(num+1));
+
     }
+
+    @FXML
+    public void playerSlotClicked(ActionEvent e){
+        System.out.println(e.getSource());
+
+        Button clickedPlayerSlot = (Button) e.getSource();
+
+
+        eventPlayerName = clickedPlayerSlot.getText();
+
+        updateStatlines(eventPlayerName, event);
+    }
+
+
+
+    private void updateStatlines(String eventPlayerName, String event) {
+        for (StatLineSummary s : statLinesSet){
+            if(eventPlayerName.equals(s.getPlayerName())) {
+                if(!event.isEmpty()){
+
+                    // TODO: implement for all Categories in StatLine
+
+                    if(event.equals("2PT-FG Made")){
+                        int i = Integer.parseInt(s.getTotalPoints());
+                        i += 2;
+                        String updatedTotalPoints = String.valueOf(i);
+
+                        s.setTotalPoints(updatedTotalPoints);
+                    }
+                    if(event.equals("3PT-FG Made")){
+                        int i = Integer.parseInt(s.getTotalPoints());
+                        i += 3;
+                        String updatedTotalPoints = String.valueOf(i);
+
+                        s.setTotalPoints(updatedTotalPoints);
+                    }
+                    if(event.equals("FT Made")){
+                        int i = Integer.parseInt(s.getTotalPoints());
+                        i += 1;
+                        String updatedTotalPoints = String.valueOf(i);
+
+                        s.setTotalPoints(updatedTotalPoints);
+
+                    }
+                    if(event.equals("Offensive Rebound") || event.equals("Defensive Rebound")){
+                        int i = Integer.parseInt(s.getTotalRebounds());
+                        i += 1;
+                        String updatedTotalRebounds= String.valueOf(i);
+                        s.setTotalRebounds(updatedTotalRebounds);
+                    }
+                    if(event.equals("Assist")){
+                        int i = Integer.parseInt(s.getTotalAssists());
+                        i += 1;
+                        String updatedTotalAssists= String.valueOf(i);
+                        s.setTotalAssists(updatedTotalAssists);
+                    }
+                    if(event.equals("Personal Foul Committed")){
+                        int i = Integer.parseInt(s.getTotalPersonalFouls());
+                        i += 1;
+                        String updatedTotalFouls= String.valueOf(i);
+                        s.setTotalPersonalFouls(updatedTotalFouls);
+                    }
+                }
+            }
+        }
+        tableview_boxScore.refresh();
+    }
+
 
     @FXML
     private void initializePlayers(ActionEvent e) {
@@ -337,13 +421,15 @@ public class HelloController implements Initializable {
         playersSet.add(new Player("Lebron", "James", 23));
         playersSet.add(new Player("Georg", "Rülling", 0));
         playersSet.add(new Player("Serdar", "Yalcin", 17));
+
+        /*
         playersSet.add(new Player("Rifat", "Kiliclasan", 6));
         playersSet.add(new Player("Donald", "Trump", 6));
         playersSet.add(new Player("Tony", "Romo", 6));
         playersSet.add(new Player("Andreas", "Gabalier", 6));
         playersSet.add(new Player("Joe", "Biden", 6));
         playersSet.add(new Player("Herbert", "Grönemeyer", 6));
-
+        */
         team.setPlayers(playersSet);
 
         int i = 1;

@@ -1,6 +1,8 @@
 package com.example.statsheetfx;
 
+import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Team {
     private String name;
@@ -8,6 +10,7 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+        players = new HashSet<>();
     }
 
     public String getName() {

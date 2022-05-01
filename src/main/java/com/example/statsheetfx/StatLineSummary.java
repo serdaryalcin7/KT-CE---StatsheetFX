@@ -15,6 +15,14 @@ public class StatLineSummary {
         this.totalPersonalFouls = String.valueOf(statLine.getPersonalFouls());
     }
 
+    public StatLineSummary(Player player){
+        this.playerName = player.getFirstName() + " " + player.getLastName();
+        this.totalPoints = "0";
+        this.totalAssists = "0";
+        this.totalRebounds = "0";
+        this.totalPersonalFouls = "0";
+    }
+
     public String getPlayerName() {
         return playerName;
     }

@@ -86,11 +86,11 @@
       <VBox layoutX="192.0" layoutY="122.0" />
       <TableView fx:id="tableview_boxScore" layoutX="513.0" layoutY="30.0" prefHeight="335.0" prefWidth="527.0">
         <columns>
-          <TableColumn fx:id="name" prefWidth="102.0" text="Player" />
-          <TableColumn fx:id="pts" minWidth="0.0" prefWidth="54.0" text="PTS" />
-            <TableColumn fx:id="reb" prefWidth="69.0" text="REB" />
-            <TableColumn fx:id="ast" prefWidth="75.0" text="AST" />
-            <TableColumn fx:id="foulsCommited" prefWidth="75.0" text="FOULS" />
+          <TableColumn fx:id="playerName" prefWidth="102.0" text="Player" />
+          <TableColumn fx:id="totalPoints" minWidth="0.0" prefWidth="54.0" text="PTS" />
+            <TableColumn fx:id="totalRebounds" prefWidth="69.0" text="REB" />
+            <TableColumn fx:id="totalAssists" prefWidth="75.0" text="AST" />
+            <TableColumn fx:id="totalPersonalFouls" prefWidth="75.0" text="FOULS" />
         </columns>
       </TableView>
       <Button fx:id="twoMade" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#twoMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
@@ -264,5 +264,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
+      <Button fx:id="loadTeam_id" layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onAction="#initializePlayers" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: grey; -fx-border-color: black;" text="load Team" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

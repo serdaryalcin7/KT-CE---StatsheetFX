@@ -329,8 +329,9 @@ public class HelloController implements Initializable {
         event = "Personal Foul Committed";
 
         //TODO: Foul-Counter should only be updated after PlayerSlot is clicked!
-        int num = Integer.parseInt(fouls.getText());
-        fouls.setText(Integer.toString(num+1));
+        int num = Integer.parseInt(teamFoulsCounter_id.getText());
+        teamFoulsCounter_id.setText(Integer.toString(num+1));
+
     }
 
 

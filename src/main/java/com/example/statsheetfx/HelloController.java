@@ -1,6 +1,10 @@
 package com.example.statsheetfx;
 
-import javafx.beans.property.SimpleStringProperty;
+import com.example.statsheetfx.dao.GameDao;
+import com.example.statsheetfx.dao.PlayerDao;
+import com.example.statsheetfx.model.Player;
+import com.example.statsheetfx.model.StatLineSummary;
+import com.example.statsheetfx.model.Team;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,19 +20,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class HelloController implements Initializable {
     private Set<StatLineSummary> statLinesSet;
     private ObservableList<StatLineSummary> statLines = FXCollections.observableArrayList();
 
-    String eventPlayerName;
-    String event;
+    String eventPlayerName = "";
+    String event = "";
+
+    private GameDao gameDao;
+    private PlayerDao playerDao;
 
     @FXML
     Button newGame;
@@ -218,15 +224,16 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        playerDao = new PlayerDao();
+
         Set<StatLineSummary> statlinesSet = new HashSet<>();
 
-        Player player1 = new Player("Lebron", "James", 23);
-        Player player2 = new Player("Serdar", "Yalcin", 17);
-        Player player3 = new Player("Georg", "Rülling", 6);
+        List<Player> players= playerDao.getPlayersFromTeam(1);
 
-        statlinesSet.add(new StatLineSummary(player1));
-        statlinesSet.add(new StatLineSummary(player2));
-        statlinesSet.add(new StatLineSummary(player3));
+        for(Player p : players ){
+            statlinesSet.add(new StatLineSummary(p));
+        }
+
 
         setStatLinesSet(statlinesSet);
 
@@ -235,7 +242,6 @@ public class HelloController implements Initializable {
         statLines.addAll(statlinesSet);
 
         if(playerName != null) {
-
             playerName.setCellValueFactory(new PropertyValueFactory<>("playerName"));
             playerName.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -264,7 +270,6 @@ public class HelloController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("newGame.fxml"));
         Stage window = (Stage) newGame.getScene().getWindow();
         window.setScene(new Scene(root, 1000, 800));
-
     }
 
 
@@ -277,15 +282,22 @@ public class HelloController implements Initializable {
         window.setScene(new Scene(root, 800, 600));
     }
     @FXML
-    public void twoMadeClicked(ActionEvent e) {
-
+    public void twoMadeClicked(ActionEvent e) throws InterruptedException {
         //TODO: counter should be updated after Player and Event is clicked
-        int num = Integer.parseInt(counterHome.getText());
-        counterHome.setText(Integer.toString(num+2));
-
+        if(!eventPlayerName.isEmpty()) {
+            String num = counterHome.getText();
+            counterHome.setText(addTwo(num));
+        }else{
+            highlightClickedButton((Button) e.getSource());
+        }
         event = "2PT-FG Made";
     }
 
+    @FXML
+    public void highlightClickedButton(Button b){
+            b.setText("markiert");
+        return;
+    }
 
     @FXML
     public void threeMadeClicked(ActionEvent e) {
@@ -337,6 +349,20 @@ public class HelloController implements Initializable {
         int num = Integer.parseInt(counterGuest.getText());
         counterGuest.setText(Integer.toString(num+1));
     }
+
+    public int addOne(int i){
+
+        return i+1;
+    }
+
+    public String addTwo(String num){
+        return Integer.toString(Integer.parseInt(num)+2);
+    }
+
+    public int addThree(int i){
+        return i+2;
+    }
+
 
     @FXML
     public void foulsClicked(ActionEvent e) {
@@ -413,39 +439,21 @@ public class HelloController implements Initializable {
 
     @FXML
     private void initializePlayers(ActionEvent e) {
-
-        Team team = new Team("LA Lakers");
-
-        Set<Player> playersSet = new HashSet<>();
-
-        playersSet.add(new Player("Lebron", "James", 23));
-        playersSet.add(new Player("Georg", "Rülling", 0));
-        playersSet.add(new Player("Serdar", "Yalcin", 17));
-
-        /*
-        playersSet.add(new Player("Rifat", "Kiliclasan", 6));
-        playersSet.add(new Player("Donald", "Trump", 6));
-        playersSet.add(new Player("Tony", "Romo", 6));
-        playersSet.add(new Player("Andreas", "Gabalier", 6));
-        playersSet.add(new Player("Joe", "Biden", 6));
-        playersSet.add(new Player("Herbert", "Grönemeyer", 6));
-        */
-        team.setPlayers(playersSet);
-
+        List<Player> players= playerDao.getPlayersFromTeam(1);
         int i = 1;
-        for(Player player :playersSet){
-            if(i == 1){ playerSlot1_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 2){ playerSlot2_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 3){ playerSlot3_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 4){ playerSlot4_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 5){ playerSlot5_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 6){ playerSlot6_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 7){ playerSlot7_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 8){ playerSlot8_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 9){ playerSlot9_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 10){ playerSlot10_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 11){ playerSlot11_id.setText(player.getFirstName() + " " + player.getLastName());}
-            if(i == 12){ playerSlot12_id.setText(player.getFirstName() + " " + player.getLastName());}
+        for(Player player :players){
+            if(i == 1){ playerSlot1_id.setText(player.getName());}
+            if(i == 2){ playerSlot2_id.setText(player.getName());}
+            if(i == 3){ playerSlot3_id.setText(player.getName());}
+            if(i == 4){ playerSlot4_id.setText(player.getName());}
+            if(i == 5){ playerSlot5_id.setText(player.getName());}
+            if(i == 6){ playerSlot6_id.setText(player.getName());}
+            if(i == 7){ playerSlot7_id.setText(player.getName());}
+            if(i == 8){ playerSlot8_id.setText(player.getName());}
+            if(i == 9){ playerSlot9_id.setText(player.getName());}
+            if(i == 10){ playerSlot10_id.setText(player.getName());}
+            if(i == 11){ playerSlot11_id.setText(player.getName());}
+            if(i == 12){ playerSlot12_id.setText(player.getName());}
 
             i += 1;
         }

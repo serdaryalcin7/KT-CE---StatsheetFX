@@ -1,4 +1,4 @@
-package com.example.statsheetfx;
+package com.example.statsheetfx.model;
 
 public class StatLineSummary {
     private String playerName;
@@ -8,7 +8,7 @@ public class StatLineSummary {
     private String totalPersonalFouls;
 
     public StatLineSummary(StatLine statLine) {
-        this.playerName = statLine.getPlayer().getFirstName() + " " + statLine.getPlayer().getLastName();
+        this.playerName = statLine.getPlayer().getName();
         this.totalPoints = String.valueOf((statLine.getFgm2()*2) + (statLine.getFgm3()*3) + statLine.getFtm());
         this.totalAssists = String.valueOf(statLine.getAssists());
         this.totalRebounds = String.valueOf(statLine.getOrebs() + statLine.getDrebs());
@@ -16,7 +16,7 @@ public class StatLineSummary {
     }
 
     public StatLineSummary(Player player){
-        this.playerName = player.getFirstName() + " " + player.getLastName();
+        this.playerName = player.getName();
         this.totalPoints = "0";
         this.totalAssists = "0";
         this.totalRebounds = "0";

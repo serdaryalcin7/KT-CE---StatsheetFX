@@ -1,8 +1,7 @@
-package com.example.statsheetfx;
+package com.example.statsheetfx.model;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Team {
     private String name;

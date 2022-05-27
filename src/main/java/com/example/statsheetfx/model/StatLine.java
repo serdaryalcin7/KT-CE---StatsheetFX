@@ -1,4 +1,4 @@
-package com.example.statsheetfx;
+package com.example.statsheetfx.model;
 
 public class StatLine {
     private Player player;
@@ -10,12 +10,14 @@ public class StatLine {
     private int ftm;
     private int orebs;
     private int drebs;
+    private int totalRebs;
     private int assists;
     private int steals;
     private int turnovers;
     private int blocks;
     private int personalFouls;
     private int forcedFouls;
+    private int points;
 
     public StatLine(Player player) {
         this.player = player;
@@ -27,12 +29,14 @@ public class StatLine {
         this.ftm = 0;
         this.orebs = 0;
         this.drebs = 0;
+        this.totalRebs = this.orebs + this.drebs;
         this.assists = 0;
         this.steals = 0;
         this.turnovers = 0;
         this.blocks = 0;
         this.personalFouls = 0;
         this.forcedFouls = 0;
+        this.points = this.ftm * 1 + this.fgm2 * 2 + this.fgm3 * 3;
     }
 
     public Player getPlayer() {

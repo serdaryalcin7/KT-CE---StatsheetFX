@@ -20,7 +20,7 @@ public class GameDao {
 
             try( ResultSet rs = ps.getGeneratedKeys()){
                 if (rs.next()) {
-                    int gameId = rs.getInt("id");
+                    int gameId = rs.getInt(1);
 
                     return new Game(gameId, teamId, guestTeam, date);
                 }

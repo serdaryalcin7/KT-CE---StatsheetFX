@@ -13,6 +13,9 @@ public class Player {
         this.teamId = teamId;
     }
 
+    public Player() {
+    }
+
     public int getId() {
         return id;
     }
@@ -43,5 +46,10 @@ public class Player {
 
     public void setTeamId(int teamId) {
         this.teamId = teamId;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -4,12 +4,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Team {
+    private int id;
     private String name;
-    private Set<Player> players;
 
-    public Team(String name) {
+    public Team(){}
+
+    public Team(int id, String name) {
+        this.id = id;
         this.name = name;
-        players = new HashSet<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -19,18 +29,8 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Set<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(Set<Player> players) {
-        this.players = players;
-    }
-
-    public void addPlayer(Player player){
-        if(player != null) {
-            this.getPlayers().add(player);
-        }
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

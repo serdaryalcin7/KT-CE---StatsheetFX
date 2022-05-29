@@ -2,6 +2,7 @@ package com.example.statsheetfx.model;
 
 public class StatLine {
     private Player player;
+    private int id;
     private int fga2;
     private int fgm2;
     private int fga3;
@@ -19,6 +20,7 @@ public class StatLine {
     private int forcedFouls;
     private int points;
 
+
     public StatLine(Player player) {
         this.player = player;
         this.fga2 = 0;
@@ -29,7 +31,7 @@ public class StatLine {
         this.ftm = 0;
         this.orebs = 0;
         this.drebs = 0;
-        this.totalRebs = this.orebs + this.drebs;
+        this.totalRebs = 0;
         this.assists = 0;
         this.steals = 0;
         this.turnovers = 0;
@@ -103,56 +105,138 @@ public class StatLine {
         return forcedFouls;
     }
 
-    public void fg2Attempt(){
-        this.fga2 +=1;
+    public int getPoints() {
+        return points;
     }
-    public void fg2Made(){                  // FG-Made always means FG-Attempt as well
-        fg2Attempt();
-        this.fgm2 +=1;
+    public int calculatePER() {
+        int i = 0;
+
+        //TODO: calculate PER!
+
+        return i;
     }
 
-    public void fg3Attempt(){
-        this.fga3 +=1;
-    }
-    public void fg3Made(){                  // FG-Made always means FG-Attempt as well
-        fg3Attempt();
-        this.fgm3 +=1;
+    public String getPlayerName(){
+        return this.player.getName();
     }
 
-    public void ftAttempt(){
-        this.fta +=1;
-    }
-    public void ftMade(){                  // FT-Made always means FG-Attempt as well
-        ftAttempt();
-        this.ftm +=1;
+    public void setId(int statLineId) {
+        this.id = statLineId;
     }
 
-    public void offRebound(){
-        this.orebs += 1;
+    public int getTotalRebs() {
+        return totalRebs;
     }
 
-    public void defRebound(){
+    public void setFga2(int fga2) {
+        this.fga2 = fga2;
+    }
+
+    public void setFgm2(int fgm2) {
+        this.fgm2 = fgm2;
+    }
+
+    public void setFga3(int fga3) {
+        this.fga3 = fga3;
+    }
+
+    public void setFgm3(int fgm3) {
+        this.fgm3 = fgm3;
+    }
+
+    public void setFta(int fta) {
+        this.fta = fta;
+    }
+
+    public void setFtm(int ftm) {
+        this.ftm = ftm;
+    }
+
+    public void setOrebs(int orebs) {
+        this.orebs = orebs;
+    }
+
+    public void setDrebs(int drebs) {
+        this.drebs = drebs;
+    }
+
+    public void setTotalRebs(int totalRebs) {
+        this.totalRebs = totalRebs;
+    }
+
+    public void setAssists(int assists) {
+        this.assists = assists;
+    }
+
+    public void setSteals(int steals) {
+        this.steals = steals;
+    }
+
+    public void setTurnovers(int turnovers) {
+        this.turnovers = turnovers;
+    }
+
+    public void setBlocks(int blocks) {
+        this.blocks = blocks;
+    }
+
+    public void setPersonalFouls(int personalFouls) {
+        this.personalFouls = personalFouls;
+    }
+
+    public void setForcedFouls(int forcedFouls) {
+        this.forcedFouls = forcedFouls;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+
+    // 2 Points Attempted / Scored
+
+    public void fta(){
+        this.fta += 1;
+    }
+
+    public void ftm(){
+        fta();
+        this.ftm += 1;
+        this.points += 1;
+    }
+
+    public void fga2(){
+        this.fga2 += 1;
+    }
+
+    public void fgm2(){
+        fga2();
+        this.fgm2 += 1;
+        this.points += 2;
+    }
+
+    // 3 Points Attempted / Scored
+
+    public void fga3(){
+        this.fga3 += 1;
+    }
+
+    public void fgm3(){
+        fga3();
+        this.fgm3 += 1;
+        this.points += 3;
+    }
+
+    // Rebounds
+
+    public void dreb(){
         this.drebs += 1;
-    }
-    public void assist(){
-        this.assists += 1;
-    }
-    public void steal(){
-        this.steals += 1;
-    }
-    public void turnover(){
-        this.turnovers += 1;
+        this.totalRebs += 1;
     }
 
-    public void block(){
-        this.blocks += 1;
+    public void oreb(){
+        this.drebs += 1;
+        this.totalRebs += 1;
     }
 
-    public void foulCommited(){
-        this.personalFouls += 1;
-    }
-
-    public void foulForced(){
-        this.forcedFouls += 1;
-    }
 }

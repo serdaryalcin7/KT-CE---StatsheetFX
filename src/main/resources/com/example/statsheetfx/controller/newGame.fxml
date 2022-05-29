@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="722.0" prefWidth="1052.0" style="-fx-background-color: darkgrey;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.statsheetfx.HelloController">
+<AnchorPane prefHeight="722.0" prefWidth="1052.0" style="-fx-background-color: darkgrey;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.statsheetfx.controller.NewGameController">
    <children>
       <Pane fx:id="scoreBoardPane_id" layoutX="36.0" layoutY="61.0" opacity="0.76" prefHeight="224.0" prefWidth="462.0" style="-fx-border-color: white; -fx-background-color: black;" styleClass="border">
          <children>
@@ -121,15 +121,15 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="twoMissed" layoutX="127.0" layoutY="392.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="twoMissed" layoutX="127.0" layoutY="392.0" mnemonicParsing="false" onAction="#twoAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="threeMissed" layoutX="319.0" layoutY="392.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="threeMissed" layoutX="319.0" layoutY="392.0" mnemonicParsing="false" onAction="#threeAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="ftMissed1" layoutX="513.0" layoutY="392.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="ftMissed1" layoutX="513.0" layoutY="392.0" mnemonicParsing="false" onAction="#ftAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
@@ -153,7 +153,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="foulsForced_Id" layoutX="617.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Forced" textFill="WHITE">
+      <Button fx:id="foulsForced_Id" layoutX="617.0" layoutY="463.0" mnemonicParsing="false" onAction="#forcedFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Forced" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -163,12 +163,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="turnover_id" layoutX="513.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="TO" textFill="WHITE">
+      <Button fx:id="turnover_id" layoutX="513.0" layoutY="463.0" mnemonicParsing="false" onAction="#turnOverClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="TO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="steal_id" layoutX="423.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Steal" textFill="WHITE">
+      <Button fx:id="steal_id" layoutX="423.0" layoutY="463.0" mnemonicParsing="false" onAction="#stealClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Steal" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -178,7 +178,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="block_id" layoutX="232.0" layoutY="463.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Block" textFill="WHITE">
+      <Button fx:id="block_id" layoutX="232.0" layoutY="463.0" mnemonicParsing="false" onAction="#blockClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Block" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -264,7 +264,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="loadTeam_id" layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onAction="#initializePlayers" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: grey; -fx-border-color: black;" text="load Team" textFill="WHITE">
+      <Button fx:id="finish_game_id" layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onAction="#finishButtonClicked" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Finish Game" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>

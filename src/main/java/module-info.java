@@ -8,4 +8,6 @@ module com.example.statsheetfx {
     exports com.example.statsheetfx;
     exports com.example.statsheetfx.model;
     opens com.example.statsheetfx.model to javafx.fxml;
+    exports com.example.statsheetfx.controller;
+    opens com.example.statsheetfx.controller to javafx.fxml;
 }

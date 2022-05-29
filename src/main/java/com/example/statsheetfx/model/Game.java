@@ -7,6 +7,7 @@ public class Game {
     private int homeTeamId;
     private String guestTeamId;
     private LocalDate date;
+    private int finalOppScore = 0;
 
     public Game(int id, int homeTeamId, String guestTeamId, LocalDate date) {
         this.id = id;
@@ -45,5 +46,16 @@ public class Game {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", homeTeamId=" + homeTeamId +
+                ", guestTeamId='" + guestTeamId + '\'' +
+                ", date=" + date +
+                ", finalOppScore=" + finalOppScore +
+                '}';
     }
 }

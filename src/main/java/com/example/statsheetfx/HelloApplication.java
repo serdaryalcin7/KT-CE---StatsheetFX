@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("controller/hello-view.fxml"));
         stage.setTitle("StatsheetFX");
         stage.setScene(new Scene(root, 800, 600));
         stage.show();

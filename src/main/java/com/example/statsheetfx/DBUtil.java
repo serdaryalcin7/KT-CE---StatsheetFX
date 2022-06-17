@@ -8,8 +8,8 @@ public class DBUtil {
 
 
     public static Connection connect() throws SQLException {
-        String userName = "root";
-        String password = "admin";
+        String userName = "ce";
+        String password = "1407";
         if(conn == null){
             conn = DriverManager.getConnection(connectionUrl, userName, password);
         }

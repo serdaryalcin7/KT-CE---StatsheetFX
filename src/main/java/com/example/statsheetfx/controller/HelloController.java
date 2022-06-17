@@ -20,9 +20,11 @@ public class HelloController implements Initializable {
     @FXML
     private Button btn_createTeamPlayer;
 
+    @FXML
+    private Button btn_analysisWindow;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
 
 
     }
@@ -35,7 +37,7 @@ public class HelloController implements Initializable {
         Parent root = loader.load();
         CreateGameController createGameController = loader.getController();
         Stage window = (Stage) newGame.getScene().getWindow();
-        window.setScene(new Scene(root, 800, 600));
+        window.setScene(new Scene(root, 1000, 800));
     }
 
     @FXML
@@ -44,6 +46,14 @@ public class HelloController implements Initializable {
         Parent root = loader.load();
         createTeamPlayerController createTeamPlayerController = loader.getController();
         Stage window = (Stage) btn_createTeamPlayer.getScene().getWindow();
+        window.setScene(new Scene(root, 1000, 800));
+    }
+
+    public void analysisWindowOpen() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("analysis.fxml"));
+        Parent root = loader.load();
+        AnalysisController analysisController = loader.getController();
+        Stage window = (Stage) btn_analysisWindow.getScene().getWindow();
         window.setScene(new Scene(root, 1000, 800));
     }
 }

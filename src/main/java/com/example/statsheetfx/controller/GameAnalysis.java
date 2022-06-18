@@ -19,26 +19,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class AnalysisController implements Initializable {
+public class GameAnalysis implements Initializable {
     /* ------------ Elements of analysis.fxml ----------------*/
-
-    @FXML
-    private Button btn_analyse;
-
     @FXML
     private Button btn_cancel;
 
-    @FXML
-    private TableView<Team> analysisTable;
-
-    @FXML
-    private TableColumn<Team,String> hometeam_col;
-
-    @FXML
-    private TableColumn<Team,String> oppteam_col;
-
-    @FXML
-    private TableColumn<Game, LocalDate> date_col;
 
 
 
@@ -49,21 +34,7 @@ public class AnalysisController implements Initializable {
         window.setScene(new Scene(root, 1200, 900));
     }
 
-    public void analyseSelected() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gameAnalysis.fxml"));
-        Parent root = loader.load();
-        GameAnalysis gameAnalysis = loader.getController();
-        Stage window = (Stage) btn_analyse.getScene().getWindow();
-        window.setScene(new Scene(root, 1200, 900));
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TeamDao teamDao = new TeamDao();
-        ObservableList<Team> teams = FXCollections.observableArrayList(teamDao.getTeams());
-        analysisTable.getItems().addAll(teams);
-        hometeam_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        /* date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
-        oppteam_col.setCellValueFactory(new PropertyValueFactory<>("guestTeamId")); */
     }
 }

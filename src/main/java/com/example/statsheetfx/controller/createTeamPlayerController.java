@@ -46,6 +46,9 @@ public class createTeamPlayerController implements Initializable {
     @FXML
     public TableView<Player> playersTable;
 
+    @FXML
+    private Button btn_cancel;
+
 
     @FXML
     public void addPlayerToTable(ActionEvent actionEvent) {
@@ -65,7 +68,6 @@ public class createTeamPlayerController implements Initializable {
     public void createNewTeam(ActionEvent actionEvent) throws SQLException, IOException {
         Team team = new Team();
         team.setName(teamName.getText());
-
         team = teamDao.createTeam(team);
 
         ObservableList<Player> players = playersTable.getItems();
@@ -78,6 +80,13 @@ public class createTeamPlayerController implements Initializable {
         Parent root = loader.load();
         Stage window = (Stage) btn_finish.getScene().getWindow();
         window.setScene(new Scene(root, 800, 600));
+    }
+
+    public void cancelNewGame() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        Parent root = loader.load();
+        Stage window = (Stage) btn_cancel.getScene().getWindow();
+        window.setScene(new Scene(root, 1200, 900));
     }
 
     @Override

@@ -44,8 +44,8 @@
        </TableView>
        <TextField fx:id="newFirstName" layoutX="724.0" layoutY="181.0" prefHeight="25.0" prefWidth="220.0" promptText="FirstName" />
        <TextField fx:id="newLastName" layoutX="724.0" layoutY="240.0" prefHeight="25.0" prefWidth="220.0" promptText="LastName" />
-       <Button layoutX="703.0" layoutY="360.0" mnemonicParsing="false" onAction="#addPlayerToTable" prefHeight="25.0" prefWidth="131.0" text="Add" />
-       <Button fx:id="btn_finish" layoutX="831.0" layoutY="561.0" mnemonicParsing="false" onAction="#createNewTeam" prefHeight="25.0" prefWidth="131.0" text="Finish" />
+       <Button layoutX="619.0" layoutY="367.0" mnemonicParsing="false" onAction="#addPlayerToTable" prefHeight="25.0" prefWidth="131.0" text="Add" />
+       <Button fx:id="btn_finish" layoutX="817.0" layoutY="367.0" mnemonicParsing="false" onAction="#createNewTeam" prefHeight="25.0" prefWidth="131.0" text="Finish" textAlignment="CENTER" />
       <TextField fx:id="newNumber" layoutX="768.0" layoutY="294.0" prefHeight="25.0" prefWidth="114.0" promptText="Jersey No." />
       <Label layoutX="619.0" layoutY="181.0" prefHeight="25.0" prefWidth="80.0" text="Firstname:">
          <font>
@@ -67,5 +67,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="btn_cancel" layoutX="79.0" layoutY="546.0" mnemonicParsing="false" onAction="#cancelNewGame" prefHeight="30.0" prefWidth="170.0" text="Cancel" textAlignment="CENTER" />
    </children>
 </AnchorPane>

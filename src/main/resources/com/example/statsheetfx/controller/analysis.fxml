@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.cell.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.statsheetfx.controller.AnalysisController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.statsheetfx.controller.AnalysisController">
    <children>
       <Label layoutX="240.0" layoutY="14.0" text="Analysis">
          <font>
@@ -19,8 +18,7 @@
         <columns>
           <TableColumn fx:id="hometeam_col" prefWidth="193.0" text="Teamname" />
           <TableColumn fx:id="oppteam_col" prefWidth="202.0" text="Opponent" />
-            <TableColumn fx:id="score_col" text="Score" />
-            <TableColumn fx:id="date_col" prefWidth="100.0" text="Date" />
+            <TableColumn fx:id="date_col" prefWidth="129.0" text="Date" />
         </columns>
       </TableView>
       <Button fx:id="btn_cancel" layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancelNewGame" prefHeight="30.0" prefWidth="170.0" text="Cancel" textAlignment="CENTER" />

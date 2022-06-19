@@ -16,7 +16,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AnalysisController implements Initializable {
@@ -29,7 +32,7 @@ public class AnalysisController implements Initializable {
     private Button btn_cancel;
 
     @FXML
-    private TableView<Team> analysisTable;
+    private TableView<GameListItem> analysisTable;
 
     @FXML
     private TableColumn<Team,String> hometeam_col;
@@ -40,7 +43,8 @@ public class AnalysisController implements Initializable {
     @FXML
     private TableColumn<Game, LocalDate> date_col;
 
-
+    List<Game> gameList = new ArrayList<>();
+    List<GameListItem> gameItems = new ArrayList<>();
 
     public void cancelNewGame() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -60,10 +64,27 @@ public class AnalysisController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TeamDao teamDao = new TeamDao();
-        ObservableList<Team> teams = FXCollections.observableArrayList(teamDao.getTeams());
-        analysisTable.getItems().addAll(teams);
-        hometeam_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        /* date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
-        oppteam_col.setCellValueFactory(new PropertyValueFactory<>("guestTeamId")); */
+        GameDao gameDao = new GameDao();
+
+        ObservableList<GameListItem> games = FXCollections.observableArrayList();
+
+        try {
+            gameList = gameDao.getGames();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for(Game game : gameList){
+            gameItems.add(new GameListItem(teamDao.getTeam(game.getHomeTeamId()).getName(), game.getGuestTeamId(), game.getDate()));
+            System.out.println(game.getId());
+        }
+
+        games.addAll(gameItems);
+
+
+        analysisTable.getItems().addAll(gameItems);
+        hometeam_col.setCellValueFactory(new PropertyValueFactory<>("homeTeam"));
+        date_col.setCellValueFactory(new PropertyValueFactory<>("opponent"));
+        oppteam_col.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 }

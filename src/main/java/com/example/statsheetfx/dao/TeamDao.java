@@ -33,6 +33,26 @@ public class TeamDao {
         }
     }
 
+    public Team getTeam(int id) {
+        try {
+            Connection conn = DBUtil.connect();
+            try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM Team WHERE id = ? ")) {
+                ps.setInt(1, id);
+                try(ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        int teamId = rs.getInt("id");
+                        String name = rs.getString("name");
+                        return new Team(teamId, name);
+                    }
+                }
+                return null;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public Team createTeam(Team team) throws SQLException {
         Connection conn = DBUtil.connect();
 

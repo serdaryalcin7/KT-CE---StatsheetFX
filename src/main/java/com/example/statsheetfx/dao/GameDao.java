@@ -5,6 +5,8 @@ import com.example.statsheetfx.model.Game;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameDao {
 
@@ -46,6 +48,27 @@ public class GameDao {
             }
         }
         return null;
+    }
+
+    public List<Game> getGames() throws SQLException {
+        Connection conn = DBUtil.connect();
+
+        ArrayList<Game> games = new ArrayList<>();
+
+        try( PreparedStatement ps = conn.prepareStatement("SELECT * FROM game")){
+            try( ResultSet rs = ps.executeQuery()){
+                while (rs.next()) {
+                    int gameId = rs.getInt("id");
+                    int homeTeamId = rs.getInt("home_team_id");
+                    String guestTeamId = rs.getString("guest_team");
+                    Date date = rs.getDate("date");
+
+                    games.add(new Game (gameId, homeTeamId, guestTeamId, date.toLocalDate()));
+
+                }
+            }
+        }
+        return games;
     }
 }
 

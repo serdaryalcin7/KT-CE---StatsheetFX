@@ -1,6 +1,7 @@
 package com.example.statsheetfx.dao;
 
 import com.example.statsheetfx.DBUtil;
+import com.example.statsheetfx.model.BoxScoreLine;
 import com.example.statsheetfx.model.Player;
 import com.example.statsheetfx.model.StatLine;
 
@@ -46,17 +47,17 @@ public class StatLineDao {
         return null;
     }
 
-public List<StatLine> getStats (int gameId) {
+public List<BoxScoreLine> getStats (int gameId) {
         PlayerDao playerDao = new PlayerDao();
     try {
         Connection conn = DBUtil.connect();
 
         try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM StatLine WHERE game_id = ?")) {
             ps.setInt(1, gameId);
-            List<StatLine> stats = new ArrayList<>();
+            List<BoxScoreLine> stats = new ArrayList<>();
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    int player = rs.getInt("player");
+                    int player = rs.getInt("player_id");
                     int id = rs.getInt("id");
                     int fga2 = rs.getInt("fga2");
                     int fga3 = rs.getInt("fga3");
@@ -64,20 +65,20 @@ public List<StatLine> getStats (int gameId) {
                     int fgm3= rs.getInt("fgm3");
                     int fta = rs.getInt("fta");
                     int ftm = rs.getInt("ftm");
-                    int orebs = rs.getInt("orebs");
-                    int drebs = rs.getInt("drebs");
-                    int totalRebs = rs.getInt("totalRebs");
-                    int assists = rs.getInt("assists");
-                    int steals = rs.getInt("steals");
-                    int turnovers = rs.getInt("turnovers");
-                    int blocks = rs.getInt("blocks");
-                    int personalFouls = rs.getInt("personalFouls");
-                    int forcedFouls = rs.getInt("forcedFouls");
-                    int points = rs.getInt("points");
+                    int oreb = rs.getInt("oreb");
+                    int dreb = rs.getInt("dreb");
+                    int totalRebs = rs.getInt("tot");
+                    int assists = rs.getInt("ass");
+                    int steals = rs.getInt("stl");
+                    int turnovers = rs.getInt("tos");
+                    int blocks = rs.getInt("blk");
+                    int personalFouls = rs.getInt("pf");
+                    int forcedFouls = rs.getInt("ff");
+                    int points = rs.getInt("pts");
 
-                    Player p = playerDao.getPlayer(player);
+                    String p = playerDao.getPlayer(player).getName();
 
-                    stats.add(new StatLine(p,id,fga3, fga2,fgm2, fgm3,fta,ftm,  orebs, drebs,totalRebs,assists,steals,turnovers,blocks,personalFouls,forcedFouls, points ));
+                    stats.add(new BoxScoreLine(p,fga3,fga2,fgm2,fgm3,fta,ftm,oreb,dreb,totalRebs,assists,steals,turnovers,blocks,personalFouls,forcedFouls,points));
                 }
             }
             return stats;

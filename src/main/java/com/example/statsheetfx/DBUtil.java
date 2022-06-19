@@ -9,7 +9,7 @@ public class DBUtil {
 
     public static Connection connect() throws SQLException {
         String userName = "root";
-        String password = "Fenerbahce1907";
+        String password = "admin";
         if(conn == null){
             conn = DriverManager.getConnection(connectionUrl, userName, password);
         }

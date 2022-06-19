@@ -34,7 +34,7 @@ public class GameAnalysis implements Initializable {
     @FXML
     private Button btn_cancel;
     @FXML
-    private TableView<StatLine> tableview_boxScore;
+    private TableView<BoxScoreLine> tableview_boxScore;
     @FXML
     private TableColumn<StatLine, String> playerName;
     @FXML
@@ -51,9 +51,9 @@ public class GameAnalysis implements Initializable {
         statLineDao = new StatLineDao();
        // gameDao = new GameDao();
 
-            ObservableList<StatLine> players = FXCollections.observableArrayList(statLineDao.getStats(15));
-            tableview_boxScore.getItems().addAll(players);
-            playerName.setCellValueFactory(new PropertyValueFactory<>("p"));
+            ObservableList<BoxScoreLine> statLines = FXCollections.observableArrayList(statLineDao.getStats(1));
+            tableview_boxScore.getItems().addAll(statLines);
+            playerName.setCellValueFactory(new PropertyValueFactory<>("player"));
             totalPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
             totalRebounds.setCellValueFactory(new PropertyValueFactory<>("totalRebs"));
             tableview_boxScore.refresh();

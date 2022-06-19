@@ -59,6 +59,9 @@ public class AnalysisController implements Initializable {
         GameAnalysis gameAnalysis = loader.getController();
         Stage window = (Stage) btn_analyse.getScene().getWindow();
         window.setScene(new Scene(root, 1200, 900));
+
+        gameAnalysis.setGameId(analysisTable.getSelectionModel().getSelectedItem().getId());
+        gameAnalysis.init();
     }
 
     @Override
@@ -75,7 +78,7 @@ public class AnalysisController implements Initializable {
         }
 
         for(Game game : gameList){
-            gameItems.add(new GameListItem(teamDao.getTeam(game.getHomeTeamId()).getName(), game.getGuestTeamId(), game.getDate()));
+            gameItems.add(new GameListItem(game.getId(),teamDao.getTeam(game.getHomeTeamId()).getName(), game.getGuestTeamId(), game.getDate()));
             System.out.println(game.getId());
         }
 

@@ -24,12 +24,29 @@ import java.util.ResourceBundle;
 
 public class GameAnalysis implements Initializable {
     /* ------------ Elements of analysis.fxml ----------------*/
+
+    private int gameId;
+
+    public GameAnalysis(int id){
+        this.gameId = id;
+    }
+
+    public GameAnalysis(){
+
+    }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
     private TeamDao teamDao;
     private PlayerDao playerDao;
     private StatLineDao statLineDao;
     private GameDao gameDao;
-
-
 
     @FXML
     private Button btn_cancel;
@@ -51,13 +68,6 @@ public class GameAnalysis implements Initializable {
         statLineDao = new StatLineDao();
        // gameDao = new GameDao();
 
-            ObservableList<BoxScoreLine> statLines = FXCollections.observableArrayList(statLineDao.getStats(1));
-            tableview_boxScore.getItems().addAll(statLines);
-            playerName.setCellValueFactory(new PropertyValueFactory<>("player"));
-            totalPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
-            totalRebounds.setCellValueFactory(new PropertyValueFactory<>("totalRebs"));
-            tableview_boxScore.refresh();
-
     }
 
     public void cancelNewGame() throws Exception {
@@ -67,5 +77,14 @@ public class GameAnalysis implements Initializable {
         window.setScene(new Scene(root, 1200, 900));
     }
 
+    public void init(){
+        ObservableList<BoxScoreLine> statLines = FXCollections.observableArrayList(statLineDao.getStats(this.getGameId()));
+        tableview_boxScore.getItems().addAll(statLines);
+        playerName.setCellValueFactory(new PropertyValueFactory<>("player"));
+        totalPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
+        totalRebounds.setCellValueFactory(new PropertyValueFactory<>("totalRebs"));
+        tableview_boxScore.refresh();
+
+    }
 
 }

@@ -41,6 +41,27 @@ public class StatLine {
         this.points = this.ftm * 1 + this.fgm2 * 2 + this.fgm3 * 3;
     }
 
+    public StatLine(Player player, int id, int fga2, int fgm2, int fga3, int fgm3, int fta, int ftm, int orebs, int drebs, int totalRebs, int assists, int steals, int turnovers, int blocks, int personalFouls, int forcedFouls, int points) {
+        this.player = player;
+        this.id = id;
+        this.fga2 = fga2;
+        this.fgm2 = fgm2;
+        this.fga3 = fga3;
+        this.fgm3 = fgm3;
+        this.fta = fta;
+        this.ftm = ftm;
+        this.orebs = orebs;
+        this.drebs = drebs;
+        this.totalRebs = totalRebs;
+        this.assists = assists;
+        this.steals = steals;
+        this.turnovers = turnovers;
+        this.blocks = blocks;
+        this.personalFouls = personalFouls;
+        this.forcedFouls = forcedFouls;
+        this.points = points;
+    }
+
     public Player getPlayer() {
         return player;
     }

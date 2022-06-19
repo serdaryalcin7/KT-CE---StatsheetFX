@@ -36,6 +36,34 @@ public class PlayerDao {
         }
     }
 
+    public Player getPlayer(int id) {
+        try {
+            Connection conn = DBUtil.connect();
+
+            try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM Player WHERE player_id = ?")) {
+                ps.setInt(1, id);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        int playerId = rs.getInt("id");
+                        String name = rs.getString("name");
+                        int number = rs.getInt("number");
+                        int team = rs.getInt("team_id");
+
+
+                        return new Player(playerId, name, number, team);
+
+                    }
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
     public Player createPlayer(Player player) throws SQLException {
         Connection conn = DBUtil.connect();
 

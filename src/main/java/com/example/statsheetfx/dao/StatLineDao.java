@@ -1,9 +1,12 @@
 package com.example.statsheetfx.dao;
 
 import com.example.statsheetfx.DBUtil;
+import com.example.statsheetfx.model.Player;
 import com.example.statsheetfx.model.StatLine;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatLineDao {
     public StatLine saveStatLine(StatLine statLine, int gameId, int playerId) throws SQLException {
@@ -42,4 +45,50 @@ public class StatLineDao {
         }
         return null;
     }
+
+public List<StatLine> getStats (int gameId) {
+        PlayerDao playerDao = new PlayerDao();
+    try {
+        Connection conn = DBUtil.connect();
+
+        try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM StatLine WHERE game_id = ?")) {
+            ps.setInt(1, gameId);
+            List<StatLine> stats = new ArrayList<>();
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    int player = rs.getInt("player");
+                    int id = rs.getInt("id");
+                    int fga2 = rs.getInt("fga2");
+                    int fga3 = rs.getInt("fga3");
+                    int fgm2 = rs.getInt("fgm2");
+                    int fgm3= rs.getInt("fgm3");
+                    int fta = rs.getInt("fta");
+                    int ftm = rs.getInt("ftm");
+                    int orebs = rs.getInt("orebs");
+                    int drebs = rs.getInt("drebs");
+                    int totalRebs = rs.getInt("totalRebs");
+                    int assists = rs.getInt("assists");
+                    int steals = rs.getInt("steals");
+                    int turnovers = rs.getInt("turnovers");
+                    int blocks = rs.getInt("blocks");
+                    int personalFouls = rs.getInt("personalFouls");
+                    int forcedFouls = rs.getInt("forcedFouls");
+                    int points = rs.getInt("points");
+
+                    Player p = playerDao.getPlayer(player);
+
+                    stats.add(new StatLine(p,id,fga3, fga2,fgm2, fgm3,fta,ftm,  orebs, drebs,totalRebs,assists,steals,turnovers,blocks,personalFouls,forcedFouls, points ));
+                }
+            }
+            return stats;
+        }
+    }catch(SQLException e){
+        e.printStackTrace();
+
+        return null;
+    }
 }
+}
+
+
+

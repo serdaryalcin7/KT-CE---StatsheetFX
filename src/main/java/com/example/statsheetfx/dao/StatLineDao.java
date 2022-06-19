@@ -58,7 +58,6 @@ public List<BoxScoreLine> getStats (int gameId) {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     int player = rs.getInt("player_id");
-                    int id = rs.getInt("id");
                     int fga2 = rs.getInt("fga2");
                     int fga3 = rs.getInt("fga3");
                     int fgm2 = rs.getInt("fgm2");

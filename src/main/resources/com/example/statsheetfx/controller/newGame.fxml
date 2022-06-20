@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -18,246 +19,217 @@
    <children>
       <Pane fx:id="scoreBoardPane_id" layoutX="36.0" layoutY="61.0" opacity="0.76" prefHeight="224.0" prefWidth="462.0" style="-fx-border-color: white; -fx-background-color: black;" styleClass="border">
          <children>
-            <Label fx:id="counterHome" layoutX="130.0" layoutY="48.0" text="0" textFill="RED">
+            <Label fx:id="counterHome" layoutX="119.0" layoutY="59.0" text="0" textFill="RED">
                <font>
                   <Font name="System Italic" size="56.0" />
                </font>
             </Label>
-            <Label fx:id="counterGuest" layoutX="327.0" layoutY="48.0" text="0" textFill="RED">
+            <Label fx:id="counterGuest" layoutX="312.0" layoutY="59.0" text="0" textFill="RED">
                <font>
                   <Font name="System Italic" size="56.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="198.0" prefHeight="25.0" prefWidth="89.0" text="Team fouls:" textFill="WHITE">
+            <Label layoutX="169.0" layoutY="198.0" prefHeight="25.0" prefWidth="89.0" text="Team fouls:" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="teamFoulsCounter_id" layoutX="139.0" layoutY="198.0" text="0" textFill="WHITE">
+            <Label fx:id="teamFoulsCounter_id" layoutX="285.0" layoutY="198.0" text="0" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Text layoutX="85.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Text fx:id="txt_homeTeam" fill="WHITE" layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" wrappingWidth="116.431640625">
+            <Text fx:id="txt_homeTeam" fill="WHITE" layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" textAlignment="CENTER" wrappingWidth="116.431640625">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txt_visitors" fill="WHITE" layoutX="269.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VISITORS" wrappingWidth="116.431640625">
+            <Text fx:id="txt_visitors" fill="WHITE" layoutX="269.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VISITORS" textAlignment="CENTER" wrappingWidth="116.431640625">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Label layoutX="231.0" layoutY="198.0" prefHeight="25.0" prefWidth="110.0" text="Quarter-Score:" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="quarterScore_id" layoutX="366.0" layoutY="198.0" prefHeight="25.0" prefWidth="57.0" text="0 - 0" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="quarter1_id" layoutX="107.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: grey; -fx-border-color: white;" text="Q1" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="quarter2_id" layoutX="154.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: grey; -fx-border-color: white;" text="Q2" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="quarter3_id" layoutX="201.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: grey; -fx-border-color: white;" text="Q3" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="quarter4_id" layoutX="251.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: grey; -fx-border-color: white;" text="Q4" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="quarterOT_id" layoutX="300.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="41.0" style="-fx-background-color: grey; -fx-border-color: white;" text="OT" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
-      <Button fx:id="back" alignment="TOP_LEFT" layoutX="15.0" layoutY="683.0" mnemonicParsing="false" onAction="#backtoHome" text="back" />
+      <Button fx:id="back" alignment="TOP_LEFT" layoutX="16.0" layoutY="696.0" mnemonicParsing="false" onAction="#backtoHome" text="Cancel" />
       <VBox layoutX="192.0" layoutY="122.0" />
       <TableView fx:id="tableview_boxScore" layoutX="513.0" layoutY="30.0" prefHeight="335.0" prefWidth="527.0">
         <columns>
-          <TableColumn fx:id="playerName" prefWidth="102.0" text="Player" />
-          <TableColumn fx:id="totalPoints" minWidth="0.0" prefWidth="54.0" text="PTS" />
-            <TableColumn fx:id="totalRebounds" prefWidth="69.0" text="REB" />
-            <TableColumn fx:id="totalAssists" prefWidth="75.0" text="AST" />
-            <TableColumn fx:id="totalPersonalFouls" prefWidth="75.0" text="FOULS" />
+          <TableColumn fx:id="playerName" prefWidth="199.0" text="Player" />
+          <TableColumn fx:id="totalPoints" minWidth="0.0" prefWidth="49.0" text="PTS" />
+            <TableColumn fx:id="totalRebounds" prefWidth="46.0" text="REB" />
+            <TableColumn fx:id="totalAssists" prefWidth="46.0" text="AST" />
+            <TableColumn fx:id="totalSteals" prefWidth="51.0" text="STL" />
+            <TableColumn fx:id="totalTurnovers" prefWidth="46.0" text="TO" />
+            <TableColumn fx:id="totalBlocks" minWidth="0.0" prefWidth="45.0" text="BLK" />
+            <TableColumn fx:id="totalPersonalFouls" minWidth="0.0" prefWidth="44.0" text="FLS" />
         </columns>
       </TableView>
-      <Button fx:id="twoMade" layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onAction="#twoMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
+      <Button fx:id="twoMade" layoutX="40.0" layoutY="404.0" mnemonicParsing="false" onAction="#twoMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="threeMade" layoutX="232.0" layoutY="392.0" mnemonicParsing="false" onAction="#threeMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
+      <Button fx:id="threeMade" layoutX="273.0" layoutY="405.0" mnemonicParsing="false" onAction="#threeMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="ftMade" layoutX="423.0" layoutY="392.0" mnemonicParsing="false" onAction="#ftMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
+      <Button fx:id="ftMade" layoutX="498.0" layoutY="404.0" mnemonicParsing="false" onAction="#ftMadeClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: green;" text="Made" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="optwoMade" layoutX="617.0" layoutY="556.0" mnemonicParsing="false" onAction="#optwoMadeClicked" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: grey; -fx-border-color: black;" text="2 Points" textFill="WHITE">
+      <Button fx:id="optwoMade" layoutX="884.0" layoutY="415.0" mnemonicParsing="false" onAction="#optwoMadeClicked" prefHeight="63.0" prefWidth="116.0" style="-fx-background-color: grey; -fx-border-color: black;" text="2 Points" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font></Button>
-      <Button fx:id="opthreeMade" layoutX="617.0" layoutY="596.0" mnemonicParsing="false" onAction="#opthreeMadeClicked" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: grey; -fx-border-color: black;" text="3 Points" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <Button fx:id="opFTmade" layoutX="617.0" layoutY="638.0" mnemonicParsing="false" onAction="#opftMadeClicked" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Free Throw" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <Button fx:id="foulsCommited_id" layoutX="617.0" layoutY="392.0" mnemonicParsing="false" onAction="#personalFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Commited" textFill="WHITE">
+      <Button fx:id="foulsCommited_id" layoutX="725.0" layoutY="400.0" mnemonicParsing="false" onAction="#personalFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Commited" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="twoMissed" layoutX="127.0" layoutY="392.0" mnemonicParsing="false" onAction="#twoAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="twoMissed" layoutX="127.0" layoutY="404.0" mnemonicParsing="false" onAction="#twoAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="threeMissed" layoutX="319.0" layoutY="392.0" mnemonicParsing="false" onAction="#threeAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="threeMissed" layoutX="360.0" layoutY="405.0" mnemonicParsing="false" onAction="#threeAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Button fx:id="ftMissed1" layoutX="513.0" layoutY="392.0" mnemonicParsing="false" onAction="#ftAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
+      <Button fx:id="ftMissed1" layoutX="588.0" layoutY="404.0" mnemonicParsing="false" onAction="#ftAttClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: red;" text="Missed" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
-      <Text fx:id="txt_2PTFieldGoalsId" fill="WHITE" layoutX="69.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2PT Field Goals" wrappingWidth="116.431640625">
+      <Text fx:id="txt_2PTFieldGoalsId" fill="WHITE" layoutX="69.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2PT Field Goals" wrappingWidth="116.431640625">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="txt_3PTFieldGoalsId" fill="WHITE" layoutX="261.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3PT Field Goals" wrappingWidth="116.431640625">
+      <Text fx:id="txt_3PTFieldGoalsId" fill="WHITE" layoutX="302.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3PT Field Goals" wrappingWidth="116.431640625">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="txt_FreeThrowsId" fill="WHITE" layoutX="455.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free Throws" wrappingWidth="116.431640625">
+      <Text fx:id="txt_FreeThrowsId" fill="WHITE" layoutX="491.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free Throws" textAlignment="CENTER" wrappingWidth="170.431640625">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="txt_FoulsId" fill="WHITE" layoutX="637.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fouls" wrappingWidth="116.431640625">
+      <Text fx:id="txt_FoulsId" fill="WHITE" layoutX="725.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fouls" textAlignment="CENTER" wrappingWidth="78.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="foulsForced_Id" layoutX="617.0" layoutY="463.0" mnemonicParsing="false" onAction="#forcedFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Forced" textFill="WHITE">
+      <Button fx:id="foulsForced_Id" layoutX="725.0" layoutY="471.0" mnemonicParsing="false" onAction="#forcedFoulClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Forced" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text fx:id="txt_FoulsId1" fill="WHITE" layoutX="625.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPP-Score" wrappingWidth="116.431640625">
+      <Text fx:id="txt_FoulsId1" fill="WHITE" layoutX="883.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPP-Score" textAlignment="CENTER" wrappingWidth="116.431640625">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="turnover_id" layoutX="513.0" layoutY="463.0" mnemonicParsing="false" onAction="#turnOverClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="TO" textFill="WHITE">
+      <Button fx:id="turnover_id" layoutX="588.0" layoutY="475.0" mnemonicParsing="false" onAction="#turnOverClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="TO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="steal_id" layoutX="423.0" layoutY="463.0" mnemonicParsing="false" onAction="#stealClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Steal" textFill="WHITE">
+      <Button fx:id="steal_id" layoutX="498.0" layoutY="475.0" mnemonicParsing="false" onAction="#stealClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Steal" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="assist_id" layoutX="319.0" layoutY="463.0" mnemonicParsing="false" onAction="#assistClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Assist" textFill="WHITE">
+      <Button fx:id="assist_id" layoutX="360.0" layoutY="476.0" mnemonicParsing="false" onAction="#assistClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Assist" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="block_id" layoutX="232.0" layoutY="463.0" mnemonicParsing="false" onAction="#blockClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Block" textFill="WHITE">
+      <Button fx:id="block_id" layoutX="273.0" layoutY="476.0" mnemonicParsing="false" onAction="#blockClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Block" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="defReb_id" layoutX="127.0" layoutY="463.0" mnemonicParsing="false" onAction="#defRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Def-Reb" textFill="WHITE">
+      <Button fx:id="defReb_id" layoutX="127.0" layoutY="475.0" mnemonicParsing="false" onAction="#defRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Def-Reb" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="offReb_id" layoutX="40.0" layoutY="463.0" mnemonicParsing="false" onAction="#offRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Off-Reb" textFill="WHITE">
+      <Button fx:id="offReb_id" layoutX="40.0" layoutY="475.0" mnemonicParsing="false" onAction="#offRebClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: blue;" text="Off-Reb" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot1_id" layoutX="40.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot1_id" layoutX="40.0" layoutY="548.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot2_id" layoutX="127.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot2_id" layoutX="127.0" layoutY="548.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot3_id" layoutX="232.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot3_id" layoutX="273.0" layoutY="549.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot4_id" layoutX="319.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot4_id" layoutX="360.0" layoutY="549.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot5_id" layoutX="423.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot5_id" layoutX="498.0" layoutY="548.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot6_id" layoutX="513.0" layoutY="536.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot6_id" layoutX="588.0" layoutY="548.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot7_id" layoutX="40.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot7_id" layoutX="40.0" layoutY="619.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot8_id" layoutX="127.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot8_id" layoutX="127.0" layoutY="619.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot9_id" layoutX="232.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot9_id" layoutX="273.0" layoutY="620.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot10_id" layoutX="319.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot10_id" layoutX="360.0" layoutY="620.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot11_id" layoutX="423.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot11_id" layoutX="498.0" layoutY="619.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="playerSlot12_id" layoutX="513.0" layoutY="607.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="playerSlot12_id" layoutX="588.0" layoutY="619.0" mnemonicParsing="false" onAction="#playerSlotClicked" prefHeight="63.0" prefWidth="78.0" style="-fx-background-color: grey; -fx-border-color: black;" text="-&#10;-" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Button fx:id="finish_game_id" layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onAction="#finishButtonClicked" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Finish Game" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="opthreeMade" layoutX="884.0" layoutY="492.0" mnemonicParsing="false" onAction="#opthreeMadeClicked" prefHeight="63.0" prefWidth="116.0" style="-fx-background-color: grey; -fx-border-color: black;" text="3 Points" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="opFTmade" layoutX="884.0" layoutY="570.0" mnemonicParsing="false" onAction="#opftMadeClicked" prefHeight="63.0" prefWidth="116.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Free Throw" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>

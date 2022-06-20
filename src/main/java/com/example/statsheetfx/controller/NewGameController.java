@@ -187,6 +187,12 @@ public class NewGameController implements Initializable {
     @FXML
     private TableColumn<StatLine, String> totalAssists;
     @FXML
+    private TableColumn<StatLine, String> totalSteals;
+    @FXML
+    private TableColumn<StatLine, String> totalTurnovers;
+    @FXML
+    private TableColumn<StatLine, String> totalBlocks;
+    @FXML
     private TableColumn<StatLine, String> totalPersonalFouls;
 
     public void setOpponent(String opponent) {
@@ -466,6 +472,9 @@ public class NewGameController implements Initializable {
         totalPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
         totalRebounds.setCellValueFactory(new PropertyValueFactory<>("totalRebs"));
         totalAssists.setCellValueFactory(new PropertyValueFactory<>("assists"));
+        totalSteals.setCellValueFactory(new PropertyValueFactory<>("steals"));
+        totalTurnovers.setCellValueFactory(new PropertyValueFactory<>("turnovers"));
+        totalBlocks.setCellValueFactory(new PropertyValueFactory<>("blocks"));
         totalPersonalFouls.setCellValueFactory(new PropertyValueFactory<>("personalFouls"));
         tableview_boxScore.setItems(stats);
     }

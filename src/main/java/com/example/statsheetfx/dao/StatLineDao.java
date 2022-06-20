@@ -2,7 +2,6 @@ package com.example.statsheetfx.dao;
 
 import com.example.statsheetfx.DBUtil;
 import com.example.statsheetfx.model.BoxScoreLine;
-import com.example.statsheetfx.model.Player;
 import com.example.statsheetfx.model.StatLine;
 
 import java.sql.*;
@@ -13,7 +12,7 @@ public class StatLineDao {
     public StatLine saveStatLine(StatLine statLine, int gameId, int playerId) throws SQLException {
         Connection conn = DBUtil.connect();
 
-        try (PreparedStatement ps = conn.prepareStatement("insert into statline (game_id, player_id, FGA2, FGM2, FGA3, FGM3, FTA, FTM, OREB, DREB, TOT, ASS, STL, TOS, BLK, PF,FF, PTS, PER) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = conn.prepareStatement("insert into statline (game_id, player_id, FGA2, FGM2, FGA3, FGM3, FTA, FTM, OREB, DREB, TOT, ASS, STL, TOS, BLK, PF,FF, PTS) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, gameId);
             ps.setInt(2, playerId);
             ps.setInt(3, statLine.getFga2());
@@ -32,7 +31,7 @@ public class StatLineDao {
             ps.setInt(16, statLine.getPersonalFouls());
             ps.setInt(17, statLine.getForcedFouls());
             ps.setInt(18, statLine.getPoints());
-            ps.setInt(19, statLine.calculatePER());
+
 
             ps.executeUpdate();
 
@@ -74,10 +73,28 @@ public List<BoxScoreLine> getStats (int gameId) {
                     int personalFouls = rs.getInt("pf");
                     int forcedFouls = rs.getInt("ff");
                     int points = rs.getInt("pts");
+                    double twopointPercentage = rs.getDouble("twopointPercentage");
+                    double ftPercentage = rs.getDouble("ftPercentage");
+                    double threepointPercentage = rs.getDouble("threepointPercentage");
 
                     String p = playerDao.getPlayer(player).getName();
 
-                    stats.add(new BoxScoreLine(p,fga3,fga2,fgm2,fgm3,fta,ftm,oreb,dreb,totalRebs,assists,steals,turnovers,blocks,personalFouls,forcedFouls,points));
+                    BoxScoreLine b = new BoxScoreLine(p,fga3,fga2,fgm2,fgm3,fta,ftm,oreb,dreb,totalRebs,assists,steals,turnovers,blocks,personalFouls,forcedFouls,points, twopointPercentage, ftPercentage, threepointPercentage);
+                            if(fgm2 != 0 && fga2 != 0 ) {
+                                b.setTwopointPercentage((float)fgm2 / (float)fga2 *100);
+                                System.out.println(b.getTwopointPercentage());
+                            }
+
+                            if(fta != 0 && ftm != 0){
+                                b.setFtPercentage((float)ftm/(float)fta *100);
+                               System.out.println(b.getFtPercentage());
+                            }
+
+                            if(fgm3 != 0 && fga3 != 0){
+                                b.setThreepointPercentage((float)fgm3/(float)fga3 *100);
+                                System.out.println(b.getThreepointPercentage());
+                    }
+                    stats.add(b);
                 }
             }
             return stats;

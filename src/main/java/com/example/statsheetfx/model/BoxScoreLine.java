@@ -18,9 +18,12 @@ public class BoxScoreLine {
     private int personalFouls;
     private int forcedFouls;
     private int points;
+    private double twopointPercentage;
+    private double ftPercentage;
+    private double threepointPercentage;
 
 
-    public BoxScoreLine(String player, int fga2, int fgm2, int fga3, int fgm3, int fta, int ftm, int orebs, int drebs, int totalRebs, int assists, int steals, int turnovers, int blocks, int personalFouls, int forcedFouls, int points) {
+    public BoxScoreLine(String player, int fga2, int fgm2, int fga3, int fgm3, int fta, int ftm, int orebs, int drebs, int totalRebs, int assists, int steals, int turnovers, int blocks, int personalFouls, int forcedFouls, int points, double twopointPercentage, double ftPercentage, double threepointPercentage) {
         this.player = player;
         this.fga2 = fga2;
         this.fgm2 = fgm2;
@@ -38,6 +41,9 @@ public class BoxScoreLine {
         this.personalFouls = personalFouls;
         this.forcedFouls = forcedFouls;
         this.points = points;
+        this.twopointPercentage = twopointPercentage;
+        this.ftPercentage = ftPercentage;
+        this.threepointPercentage = threepointPercentage;
     }
 
     public BoxScoreLine(StatLine statLine){
@@ -58,6 +64,31 @@ public class BoxScoreLine {
         this.personalFouls = statLine.getPersonalFouls();
         this.forcedFouls = statLine.getForcedFouls();
         this.points = statLine.getPoints();
+
+    }
+
+    public double getThreepointPercentage() {
+        return threepointPercentage;
+    }
+
+    public void setThreepointPercentage(double threepointPercentage) {
+        this.threepointPercentage = threepointPercentage;
+    }
+
+    public double getFtPercentage() {
+        return ftPercentage;
+    }
+
+    public void setFtPercentage(double ftPercentage) {
+        this.ftPercentage = ftPercentage;
+    }
+
+    public double getTwopointPercentage() {
+        return twopointPercentage;
+    }
+
+    public void setTwopointPercentage(double twopointPercentage) {
+        this.twopointPercentage = twopointPercentage;
     }
 
     public String getPlayer() {
@@ -67,6 +98,8 @@ public class BoxScoreLine {
     public void setPlayer(String player) {
         this.player = player;
     }
+
+
 
 
     public int getFga2() {
@@ -196,4 +229,8 @@ public class BoxScoreLine {
     public void setPoints(int points) {
         this.points = points;
     }
+
+
 }
+
+

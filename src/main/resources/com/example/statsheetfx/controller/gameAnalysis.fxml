@@ -16,35 +16,25 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Button fx:id="btn_cancel" layoutX="389.0" layoutY="417.0" mnemonicParsing="false" onAction="#cancelNewGame" prefHeight="30.0" prefWidth="170.0" text="Cancel" textAlignment="CENTER" />
-            <TableView fx:id="tableview_boxScore" layoutX="52.0" layoutY="134.0" prefHeight="263.0" prefWidth="845.0">
+            <TableView fx:id="tableview_boxScore" layoutX="15.0" layoutY="108.0" prefHeight="334.0" prefWidth="919.0">
                <columns>
                   <TableColumn fx:id="playerName" prefWidth="130.0" text="PLAYER" />
                   <TableColumn fx:id="totalPoints" minWidth="0.0" prefWidth="53.0" text="POINTS" />
                   <TableColumn fx:id="totalRebounds" prefWidth="71.0" text="REBOUNDS" />
                   <TableColumn fx:id="totalAssists" minWidth="0.0" prefWidth="73.0" text="ASSISTS" />
-                  <TableColumn prefWidth="47.0" text="STEALS" />
-                  <TableColumn prefWidth="71.0" text="BLOCKS" />
-                  <TableColumn prefWidth="83.0" text="TURNOVERS" />
+                  <TableColumn fx:id="totalSteals" prefWidth="47.0" text="STEALS" />
+                  <TableColumn fx:id="totalBlocks" prefWidth="71.0" text="BLOCKS" />
+                  <TableColumn fx:id="totalTurnovers" prefWidth="83.0" text="TURNOVERS" />
                   <TableColumn fx:id="totalPersonalFouls" prefWidth="42.0" text="FOULS" />
-                  <TableColumn fx:id="totalPoints1" minWidth="0.0" text="2-FG MADE" />
-                  <TableColumn fx:id="totalPoints111" minWidth="0.0" prefWidth="46.0" text="2-FG%" />
-                  <TableColumn fx:id="totalPoints11" minWidth="0.0" prefWidth="72.0" text="3-FG MADE" />
-                  <TableColumn minWidth="0.0" prefWidth="44.0" text="3-FG%" />
-                  <TableColumn fx:id="totalPoints1121" minWidth="0.0" prefWidth="32.0" text="FG%" />
+                  <TableColumn fx:id="twopoint" minWidth="0.0" text="2-FG MADE" />
+                  <TableColumn fx:id="twopointPercentage" minWidth="0.0" prefWidth="46.0" text="2-FG%" />
+                  <TableColumn fx:id="threepoint" minWidth="0.0" prefWidth="72.0" text="3-FG MADE" />
+                  <TableColumn fx:id="threepointPercentage" minWidth="0.0" prefWidth="44.0" text="3-FG%" />
+                  <TableColumn fx:id="ftPercentage" minWidth="0.0" prefWidth="32.0" text="FT%" />
                </columns>
             </TableView>
-            <Label layoutX="52.0" layoutY="105.0" text="Date:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="78.0" text="Opponent:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
+      <Button fx:id="btn_cancel" layoutX="397.0" layoutY="541.0" mnemonicParsing="false" onAction="#cancelNewGame" prefHeight="30.0" prefWidth="170.0" text="Cancel" textAlignment="CENTER" />
    </children>
 </AnchorPane>

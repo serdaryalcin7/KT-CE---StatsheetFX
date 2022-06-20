@@ -79,7 +79,7 @@ public class AnalysisController implements Initializable {
 
         for(Game game : gameList){
             gameItems.add(new GameListItem(game.getId(),teamDao.getTeam(game.getHomeTeamId()).getName(), game.getGuestTeamId(), game.getDate()));
-            System.out.println(game.getId());
+
         }
 
         games.addAll(gameItems);
@@ -87,7 +87,7 @@ public class AnalysisController implements Initializable {
 
         analysisTable.getItems().addAll(gameItems);
         hometeam_col.setCellValueFactory(new PropertyValueFactory<>("homeTeam"));
-        date_col.setCellValueFactory(new PropertyValueFactory<>("opponent"));
-        oppteam_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+        oppteam_col.setCellValueFactory(new PropertyValueFactory<>("opponent"));
     }
 }

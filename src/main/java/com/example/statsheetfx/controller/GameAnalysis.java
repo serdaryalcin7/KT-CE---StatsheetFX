@@ -53,11 +53,33 @@ public class GameAnalysis implements Initializable {
     @FXML
     private TableView<BoxScoreLine> tableview_boxScore;
     @FXML
-    private TableColumn<StatLine, String> playerName;
+    private TableColumn<BoxScoreLine, String> playerName;
     @FXML
-    private TableColumn<StatLine, String> totalPoints;
+    private TableColumn<BoxScoreLine, String> totalPoints;
     @FXML
     private TableColumn<?, ?> totalRebounds;
+    @FXML
+    private TableColumn<?, ?> totalTurnovers;
+    @FXML
+    private TableColumn<?, ?> ftPercentage;
+    @FXML
+    private TableColumn<?, ?> totalSteals;
+    @FXML
+    private TableColumn<StatLine, String> twopoint;
+    @FXML
+    private TableColumn<?, ?> twopointPercentage;
+    @FXML
+    private TableColumn<?, ?> threepointPercentage;
+    @FXML
+    private TableColumn<?, ?> totalAssists;
+    @FXML
+    private TableColumn<?, ?> threepoint;
+    @FXML
+    private TableColumn<?, ?> totalBlocks;
+    @FXML
+    private TableColumn<?, ?> totalPersonalFouls;
+
+
 
 
 
@@ -83,6 +105,16 @@ public class GameAnalysis implements Initializable {
         playerName.setCellValueFactory(new PropertyValueFactory<>("player"));
         totalPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
         totalRebounds.setCellValueFactory(new PropertyValueFactory<>("totalRebs"));
+        totalAssists.setCellValueFactory(new PropertyValueFactory<>("assists"));
+        totalSteals.setCellValueFactory(new PropertyValueFactory<>("steals"));
+        totalBlocks.setCellValueFactory(new PropertyValueFactory<>("blocks"));
+        totalTurnovers.setCellValueFactory(new PropertyValueFactory<>("turnovers"));
+        totalPersonalFouls.setCellValueFactory(new PropertyValueFactory<>("personalFouls"));
+        twopoint.setCellValueFactory(new PropertyValueFactory<>("fgm2"));
+        twopointPercentage.setCellValueFactory(new PropertyValueFactory<>("twopointPercentage"));
+        threepoint.setCellValueFactory(new PropertyValueFactory<>("fgm3"));
+        threepointPercentage.setCellValueFactory(new PropertyValueFactory<>("threepointPercentage"));
+        ftPercentage.setCellValueFactory(new PropertyValueFactory<>("ftPercentage"));
         tableview_boxScore.refresh();
 
     }

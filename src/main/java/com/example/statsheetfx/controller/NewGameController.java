@@ -227,12 +227,6 @@ public class NewGameController implements Initializable {
 
     @FXML
     public void twoMadeClicked(ActionEvent e) throws InterruptedException {
-        //TODO: Stats werden nur erfasst, wenn zuerst das Event und dann der Spieler geklickt wird -> auch andere Richtung implementieren!
-        if (!eventPlayerName.isEmpty()) {
-
-        } else {
-            highlightClickedButton((Button) e.getSource());
-        }
         event = "2PT-FG Made";
     }
 
@@ -243,8 +237,6 @@ public class NewGameController implements Initializable {
 
     @FXML
     public void threeMadeClicked(ActionEvent e) {
-        int num = Integer.parseInt(counterHome.getText());
-        //counterHome.setText(Integer.toString(num + 3));
         event = "3PT-FG Made";
     }
 
@@ -304,12 +296,7 @@ public class NewGameController implements Initializable {
     }
 
 
-    @FXML
-    //TODO: highlight Button when klicked
-    public void highlightClickedButton(Button b) {
-        b.setText("markiert");
-        return;
-    }
+
 
     /* Opponent scores */
     @FXML
@@ -356,10 +343,11 @@ public class NewGameController implements Initializable {
         for (StatLine s : stats) {
             if (eventPlayerName.equals(s.getPlayerName())) {
                 if (!event.isEmpty()) {
-                    // TODO: implement for all Categories in StatLine
+
                     if (event.equals("2PT-FG Attempted")) {
                         s.fga2();
                     }
+
                     if (event.equals("2PT-FG Made")) {
                         s.fgm2();
                         int num = Integer.parseInt(counterHome.getText()) + 2;

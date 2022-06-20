@@ -19,6 +19,7 @@ public class StatLine {
     private int personalFouls;
     private int forcedFouls;
     private int points;
+    private double twopointPercentage;
 
 
     public StatLine(Player player) {
@@ -39,6 +40,7 @@ public class StatLine {
         this.personalFouls = 0;
         this.forcedFouls = 0;
         this.points = this.ftm * 1 + this.fgm2 * 2 + this.fgm3 * 3;
+
     }
 
     public StatLine(Player player, int id, int fga2, int fgm2, int fga3, int fgm3, int fta, int ftm, int orebs, int drebs, int totalRebs, int assists, int steals, int turnovers, int blocks, int personalFouls, int forcedFouls, int points) {
@@ -60,7 +62,10 @@ public class StatLine {
         this.personalFouls = personalFouls;
         this.forcedFouls = forcedFouls;
         this.points = points;
+
     }
+
+
 
     public Player getPlayer() {
         return player;
@@ -129,13 +134,7 @@ public class StatLine {
     public int getPoints() {
         return points;
     }
-    public int calculatePER() {
-        int i = 0;
 
-        //TODO: calculate PER!
-
-        return i;
-    }
 
     public String getPlayerName(){
         return this.player.getName();
